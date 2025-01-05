@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kajal's Developer Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Reset default browser styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Base styles for the body */
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f9f9f9;
+            margin: 0;
+        }
+
+        /* Header styles */
+        header {
+            background: linear-gradient(to right, #333, #444);
+            color: #fff;
+            padding: 1rem 0;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: auto;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #fff;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+        }
+
+        .nav-links li {
+            margin: 0 1rem;
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+
+        .nav-links a:hover {
+            color: #007BFF;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .hamburger span {
+            background: #fff;
+            height: 3px;
+            width: 25px;
+            margin: 4px;
+        }
+
+        /* Section spacing and alignment */
+        section {
+            padding: 5rem 2rem;
+            margin-top: 80px;
+        }
+
+        .home {
+            background: #f4f4f4;
+            text-align: center;
+            padding: 6rem 2rem;
+            background-image: url('https://via.placeholder.com/1500x800'); /* Add background image */
+            background-size: cover;
+            color: white;
+        }
+
+        .home .intro h1 {
+            font-size: 3rem;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+        }
+
+        .home .intro span {
+            color: #007BFF;
+        }
+
+        .btn {
+            display: inline-block;
+            margin-top: 1rem;
+            padding: 0.8rem 1.5rem;
+            color: #fff;
+            background: #007BFF;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 1.1rem;
+        }
+
+        .btn:hover {
+            background: #0056b3;
+        }
+
+        .about, .projects, .skills, .contact {
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .about {
+            background: #e0f7fa;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .about h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            color: #007BFF;
+        }
+
+        .about p {
+            font-size: 1.1rem;
+            margin-top: 1rem;
+            line-height: 1.8;
+        }
+
+        .projects .project {
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .projects h3 {
+            font-size: 2rem;
+            color: #007BFF;
+        }
+
+        .projects p {
+            font-size: 1.1rem;
+            color: #555;
+        }
+
+        .skills {
+            background: #f4f4f4;
+            padding: 3rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .skills h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            color: #007BFF;
+        }
+
+        .skills ul {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            list-style: none;
+            margin-top: 2rem;
+        }
+
+        .skills ul li {
+            margin: 1rem 2rem;
+            font-size: 1.2rem;
+            color: #555;
+        }
+
+        .skills ul li::before {
+            content: "✔️";
+            margin-right: 10px;
+            color: #007BFF;
+        }
+
+        .contact {
+            text-align: center;
+            background: #f9f9f9;
+            padding: 3rem;
+            border-radius: 10px;
+        }
+
+        .contact h2 {
+            font-size: 2.5rem;
+            color: #007BFF;
+        }
+
+        .contact-info p {
+            margin: 0.5rem 0;
+            font-size: 1.1rem;
+        }
+
+        .contact-info a {
+            color: #007BFF;
+            text-decoration: none;
+        }
+
+        .contact-info a:hover {
+            text-decoration: underline;
+        }
+
+        .contact form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .contact label {
+            margin: 0.5rem 0 0.2rem;
+        }
+
+        .contact input, .contact textarea, .contact button {
+            padding: 0.8rem;
+            margin-bottom: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 100%;
+            max-width: 500px;
+            font-size: 1.1rem;
+        }
+
+        .contact button {
+            background: #007BFF;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+
+        .contact button:hover {
+            background: #0056b3;
+        }
+
+        footer {
+            text-align: center;
+            padding: 1rem 0;
+            background: #333;
+            color: #fff;
+        }
+
+        @media (max-width: 768px) {
+            /* Styles for smaller screens */
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                background: #333;
+                position: absolute;
+                top: 60px;
+                right: 0;
+                width: 100%;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .logo {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Fixed header navigation -->
+    <header>
+        <nav>
+            <div class="logo">Kajal</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <!-- Hamburger menu for smaller screens -->
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Home section with introductory content -->
+    <section id="home" class="home">
+        <div class="intro">
+            <h1>Hello, I'm <span>Kajal</span></h1>
+            <p>Welcome to my portfolio! Let's build something amazing together.</p>
+            <a href="#contact" class="btn">Contact Me</a>
+        </div>
+    </section>
+
+    <!-- About section with detailed bio -->
+    <section id="about" class="about">
+        <h2>About Me</h2>
+        <p>I am a passionate developer currently pursuing BCA in Software Development at Sri Balaji University, Pune, with a strong academic record (CGPA: 9.64). With experience in Java, DBMS, and full-stack development, I've worked on four internships and contributed to several projects aimed at solving real-world problems.</p>
+        <p>Comapany names which i have worked/working for internships:</p>
+
+            <p>1.skillcraft Technology</p>
+            <p>2.CODTECH IT SOLUTIONS</p>
+            <p>3.cognifyz</p>
+            <p>4.Brainwave matrix solutions</p>
+    </section>
+
+    <!-- Projects section listing key projects -->
+    <section id="projects" class="projects">
+        <h2>Projects</h2>
+        <div class="project">
+            <h3>Task Management Tool</h3>
+            <p>This web/mobile application helps users efficiently manage tasks and projects, promoting better organization, task prioritization, and productivity. Developed using Java and MySQL.</p>
+        </div>
+        <div class="project">
+            <h3>Health and Fitness Tracker</h3>
+            <p>A mobile app designed to help users monitor their health and fitness activities, with features like daily step counting, calorie tracking, and progress visualization. Built with Java and integrated with REST APIs for real-time data tracking.</p>
+        </div>
+    </section>
+
+    <!-- Skills section -->
+    <section id="skills" class="skills">
+        <h2>Skills</h2>
+        <ul>
+            <li>Java</li>
+            <li>DBMS (Advanced)</li>
+            <li>HTML & CSS</li>
+            <li>JavaScript</li>
+            <li>Responsive Design</li>
+            <li>Database Management (Postgres SQL)</li>
+            <li>Version Control (Git)</li>
+        </ul>
+    </section>
+
+    <!-- Contact section with contact details and form -->
+    <section id="contact" class="contact">
+        <h2>Contact</h2>
+        <div class="contact-info">
+            <p><strong>Email:</strong> kajal152225@gmail.com</p>
+            <p><strong>Phone:</strong> 9067682671</p>
+            <p><strong>Address:</strong> Flat No. 302, Shivshrushti Apartment, Near Shitla Devi Mandir</p>
+            <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/kajal-pardeshi-642715321" target="_blank">https://www.linkedin.com/in/kajal-pardeshi-642715321</a></p>
+        </div>
+        <form>
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="5" required></textarea>
+
+            <button type="submit">Send</button>
+        </form>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Kajal. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Toggles visibility of navigation links on small screens
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+    </script>
+</body>
+</html>
